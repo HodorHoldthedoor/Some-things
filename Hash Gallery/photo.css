@@ -1,0 +1,140 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2017-07-03 15:12:25
+ * @version $Id$
+ */
+	*{padding: 0;margin: 0;}
+	body{
+		background-color: #fff;
+		color:#555;
+		font-family: 'Avenir Next','Lantinghei SC';
+		font-size:14px;
+		-webkit-font-smoothing:antialiased;
+		-moz-font-smoothing:antialiased;
+	}
+	.wrap{
+		width:100%;
+		height: 600px;
+		background-color: #333;
+		position: absolute;
+		top:50%;
+		margin-top: -300px;
+		overflow: hidden;
+		-webkit-perspective:800px;   //显示3d效果
+		-moz-perspective:800px;
+	}
+	.photo{
+		width: 260px;
+		height: 320px;
+		position: absolute;
+		z-index: 1;
+		box-shadow: 0 0 1px rgba(0,0,0,0.01);
+		-webkit-transition:all 0.6s;
+		-moz-transition:all 0.6s;
+	}
+	.photo .side{
+		width:100%;
+		height: 100%;
+		background-color: #eee;
+		position: absolute;
+		top:0;
+		right:0;
+		padding: 20px;
+		box-sizing: border-box;
+	}
+	.photo .side-front .image{
+		width: 100%;
+		height: 250px;
+		line-height: 300px;
+		overflow: hidden;
+		background-color: 
+	}
+	.photo .side-front .image img{
+		width: 100%;
+		height: 100%;
+	}
+	.photo .side-front .caption{
+		text-align: center;
+		font-size: 16px;
+		line-height: 50px;
+	}
+	.photo .side-back{}
+	.photo .side-back .desc{
+		color: #666;
+		font-size: 14px;
+		line-height: 1.5em;
+	}
+	/*当前选中海报样式*/
+	.photo_center{
+		width: 260px;
+		height: 320px;
+		left: 50%;
+		top: 50%;
+		margin-left:-130px;
+		margin-top: -160px;
+		z-index: 999;
+	}
+	.photo-wrap{
+		position: absolute;
+		width:100%;
+		height: 100%;
+		-webkit-transform-style:preserve-3d;   
+		-webkit-transition:all 0.6s;
+		-moz-transform-style:preserve-3d;   
+		-moz-transition:all 0.6s;
+	}
+	.photo-wrap .side-front{
+		-webkit-transform:rotateY(0deg);
+		-moz-transform:rotateY(0deg);
+	}
+	.photo-wrap .side-back{
+		-webkit-transform:rotateY(180deg);
+		-moz-transform:rotateY(180deg);
+	}
+	.photo-wrap .side{
+		-webkit-backface-bisibility:hidden;
+		-moz-backface-bisibility:hidden;
+	}
+	.nav{
+		width:40%;
+		height:30px;
+		line-height: 30px;
+		position: absolute;
+		left: 30%;
+		bottom:20px;
+		z-index: 999;
+		text-align: center;
+	}
+	/*普通样式*/
+	.nav .i{
+		width:30px;
+		height:30px; 
+		display: inline-block;
+		cursor:pointer;
+		background-color: #aaa;
+		text-align: center;	
+		border-radius:50%;	
+		-webkit-transform:scale(0.48);
+	}
+	/*当前选中样式*/
+	.nav .i_current{
+		-webkit-transform:scale(0.8);
+	}
+	/*优化样式*/
+	.photo{
+		left:50%;
+		top:50%;  /*left,top,margin解决中间图片在突然失去photo_center类名后缺失属性，使动画不平滑*/
+		margin-left:-130px;
+		margin-top: -160px; 
+	}
+	.photo-wrap{
+		-webkit-transform-origin:0% 50%;
+	}
+	.photo_front .photo-wrap{
+		-webkit-transform:translate(0px,0px) rotateY(0deg);
+	}
+	.photo_back .photo-wrap{
+		-webkit-transform:translate(260px,0px) rotateY(180deg);
+	}
